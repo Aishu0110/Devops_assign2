@@ -2,12 +2,12 @@ steps:
  # Docker Build Step
  - name: 'gcr.io/cloud-builders/docker'
    args: ['build', '-t',
-          'us-central1-docker.pkg.dev/assign-450918/Aishu-100938916/assignment2:${SHORT_SHA}',
+          'us-central1-docker.pkg.dev/assign-450918/aishwarya-100938916/assignment2:${SHORT_SHA}',
           '.']
  # Docker Push Step
  - name: 'gcr.io/cloud-builders/docker'
    args: ['push',
-          'us-central1-docker.pkg.dev/assign-450918/Aishu-100938916/assignment2:${SHORT_SHA}']
+          'us-central1-docker.pkg.dev/assign-450918/aishwarya-100938916/assignment2:${SHORT_SHA}']
  # Deploy to Cloud Run Step using Google Cloud SDK container
  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
    entrypoint: gcloud
@@ -16,13 +16,13 @@ steps:
      - 'deploy'
      - 'assignment2'  # This is your Cloud Run service name
      - '--image'
-     - 'us-central1-docker.pkg.dev/assign-450918/Aishu-100938916/assignment2:${SHORT_SHA}'
+     - 'us-central1-docker.pkg.dev/assign-450918/aishwarya-100938916/assignment2:${SHORT_SHA}'
      - '--region'
      - 'us-central1'  # Adjust if your Cloud Run service is in a different region
      - '--platform'
      - 'managed'  # Use fully managed Cloud Run platform
      - '--allow-unauthenticated'  # Optional: If you want the app to be publicly accessible
 images:
- - 'us-central1-docker.pkg.dev/assign-450918/Aishu-100938916/assignment2:${SHORT_SHA}'
+ - 'us-central1-docker.pkg.dev/assign-450918/aishwarya-100938916/assignment2:${SHORT_SHA}'
 options:
  defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
